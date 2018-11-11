@@ -40,3 +40,5 @@ THE FRIENDS LIST UPDATE WORKS, IF YOU ADD A USER AND CLICK ON THE FRIENDS LIST I
 
 ## EVERY DAY I SEE MORE AND MORE WHY I LOVE FIREBASE!!!!!
 
+(all caps because I was doing readme markdown and I left it on, not because upset at this assignment, although i hope u agree.)
+(i will love this non-firebase server side stuff too with practice time spent on it rather than time spent on matchmaker logic with array manipulation rather than a relational database lol.)
