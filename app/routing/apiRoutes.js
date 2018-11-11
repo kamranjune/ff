@@ -19,9 +19,13 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
+
+  //sends back all the friends object array 
+
   app.get("/api/friends", function(req, res) {
     res.json(friends);
   });
+
 
 
   app.post("/api/friends", function(req, res) {
@@ -45,27 +49,66 @@ module.exports = function(app) {
     var friendsScoreArray = [];
     var userScoreArray = [];
     var totalDifferenceArray = [];
-    var totalDiffferenceReduced = [];
+    var totalDifferenceReduced = [];
     var totalDifferenceIndex = 0;
     
-    
+
     function getSum(total, num) {
         return total + num;
         }
     
+ 
+  
+    userScoreArray = friends[2].scores.pop();
+    
+    console.log ("userScoreArray" + userScoreArray);
+    
+    for (var j = 0; j < 2; j++) {
+    
+        for (var k = 0; k < 10; k++) {
+        totalDifferenceArray[j]=Math.abs(userScoreArray[k]-friends[j].scores[k]); 
+        }
+        totalDifferenceReduced[j] = totalDifferenceArray.reduce(getSum);
+    }
+    
+    totalDifferenceIndex = totalDifferenceReduced.indexOf(Math.min.apply(null,totalDifferenceReduced));
+    
+    console.log("totaldiffindex" + totalDifferenceIndex);
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+/*   trying to use for each but having problems bc of callback function mixed with array
+    function scoreExtractorFXN(item) {
+        
+        friendsScoreArray[i].push(item);    
+    }
+
+    function getSum(total, num) {
+        return total + num;
+        }
+    
+
     for (var i=0; i < friends.length; i++) {
     
     friends[i].scores.forEach(scoreExtractorFXN);
     }
     
-    function scoreExtractorFXN(item) {
-        
-        friendsScoreArray[i].push(item);    
-    }
-    
-    
+  
+ 
+  
     userScoreArray = friendsScoreArray.pop();
     
+    console.log ("userScoreArray" + userScoreArray);
     
     for (var j = 0; j< friendsScoreArray.length; j++) {
     
@@ -81,7 +124,7 @@ module.exports = function(app) {
     
     
     
-    
+  */  
     
     
     
@@ -137,8 +180,8 @@ module.exports = function(app) {
 
 
 
-    
-    res.json(friend[totalDifferenceIndex]);
+    console.log ("Match index is:" + friends[totalDifferenceIndex]);  
+    res.json(friends[totalDifferenceIndex]);
   });
 
 };
